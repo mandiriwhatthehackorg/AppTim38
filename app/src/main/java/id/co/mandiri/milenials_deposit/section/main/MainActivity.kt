@@ -1,4 +1,4 @@
-package id.co.mandiri.milenials_deposit.section
+package id.co.mandiri.milenials_deposit.section.main
 
 import android.os.Bundle
 import id.co.mandiri.milenials_deposit.R

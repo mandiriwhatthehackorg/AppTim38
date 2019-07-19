@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Mandiri Milenials Deposit</string>
-    <string name="empty_string"> </string>
+    <string name="empty_string"></string>
+
+
+    <string name="text_dummy_onboarding_title">Onboarding Title</string>
+    <string name="text_dummy_onboarding_desc">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </string>
+    <string name="text_understood">Mengerti</string>
 </resources>
