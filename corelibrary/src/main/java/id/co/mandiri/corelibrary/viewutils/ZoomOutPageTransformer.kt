@@ -1,7 +1,8 @@
-package id.co.mandiri.corelibrary.commons
+package id.co.mandiri.corelibrary.viewutils
 
 import android.view.View
 import androidx.viewpager.widget.ViewPager
+import kotlin.math.abs
 
 /**
  * Created by pertadima on 19,July,2019
@@ -24,7 +25,7 @@ class ZoomOutPageTransformer : ViewPager.PageTransformer {
                 }
                 position <= 1 -> { // [-1,1]
                     // Modify the default slide transition to shrink the page as well
-                    val scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position))
+                    val scaleFactor = Math.max(MIN_SCALE, 1 - abs(position))
                     val vertMargin = pageHeight * (1 - scaleFactor) / 2
                     val horzMargin = pageWidth * (1 - scaleFactor) / 2
                     translationX = if (position < 0) {

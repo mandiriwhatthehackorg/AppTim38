@@ -1,4 +1,4 @@
-package id.co.mandiri.corelibrary.commons
+package id.co.mandiri.corelibrary.viewutils
 
 import android.graphics.Rect
 import android.view.View
