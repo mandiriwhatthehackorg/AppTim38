@@ -1,9 +1,11 @@
 package id.co.mandiri.milenials_deposit.section.login
 
+import android.content.Intent
 import android.os.Bundle
 import com.jakewharton.rxbinding2.widget.RxTextView
 import id.co.mandiri.milenials_deposit.R
 import id.co.mandiri.milenials_deposit.base.BaseActivity
+import id.co.mandiri.milenials_deposit.section.home.HomeActivity
 import id.co.mandiri.milenials_deposit.utils.setAvailable
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -17,6 +19,10 @@ class LoginActivity : BaseActivity() {
 
     override fun onViewReady(savedInstanceState: Bundle?) {
         observeEditTextChanges()
+        btn_login.setOnClickListener {
+            startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
+            finish()
+        }
     }
 
     private fun observeEditTextChanges() {

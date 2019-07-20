@@ -2,8 +2,8 @@ package id.co.mandiri.milenials_deposit.deps.builder
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import id.co.mandiri.milenials_deposit.section.home.HomeActivity
 import id.co.mandiri.milenials_deposit.section.login.LoginActivity
-import id.co.mandiri.milenials_deposit.section.main.MainActivity
 import id.co.mandiri.milenials_deposit.section.onboarding.OnboardingActivity
 
 /**
@@ -14,7 +14,7 @@ import id.co.mandiri.milenials_deposit.section.onboarding.OnboardingActivity
 @Module
 abstract class ActivityBuilder {
     @ContributesAndroidInjector
-    abstract fun bindMainActivity(): MainActivity
+    abstract fun bindHomeActivity(): HomeActivity
 
     @ContributesAndroidInjector
     abstract fun bindOnboardingActivity(): OnboardingActivity

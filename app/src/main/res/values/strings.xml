@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Mandiri Milenials Deposit</string>
-    <string name="empty_string"> </string>
+    <string name="empty_string"></string>
 
 
     <string name="text_dummy_onboarding_title">Onboarding Title</string>
@@ -11,4 +11,34 @@
     <string name="text_login">Masuk</string>
     <string name="text_password">Password</string>
     <string name="text_username">Username</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="text_profile">Profile</string>
+    <string name="life_plan">Life Plan</string>
+    <string name="text_life_plan_history">Life Plan History</string>
+
+    <string name="text_my_name">Nama Saya : %s</string>
+    <string name="text_my_account_number">Rekening Saya : %s</string>
+    <string name="text_create_life_plan">Buat Life Plan</string>
+    <string name="text_see_all">Lihat Selengkapnya</string>
+    <string name="text_school">Sekolah</string>
+    <string name="text_dummy_duration">2 Tahun Lagi</string>
+    <string name="text_dummy_presentage">50%</string>
+    <string name="text_value_title">Nilai Masa Depan</string>
+    <string name="text_current_value">Terkumpul</string>
+    <string name="dummy_future">Rp 100.000.000</string>
+    <string name="text_menabung">Menabung</string>
+    <string name="text_do_saving">Tabung</string>
 </resources>

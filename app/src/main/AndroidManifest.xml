@@ -3,6 +3,8 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="id.co.mandiri.milenials_deposit">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
             android:name=".MainApp"
             android:allowBackup="true"
@@ -12,8 +14,14 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:windowSoftInputMode="adjustPan|adjustResize"
-                  android:name=".section.login.LoginActivity">
+        <activity
+                android:name=".section.home.HomeActivity"
+                android:label="@string/title_activity_home"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+                android:name=".section.login.LoginActivity"
+                android:windowSoftInputMode="adjustPan|adjustResize">
         </activity>
         <activity android:name=".section.onboarding.OnboardingActivity">
             <intent-filter>
@@ -22,7 +30,5 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".section.main.MainActivity"/>
     </application>
-
 </manifest>
