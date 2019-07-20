@@ -4,7 +4,7 @@
        android:shape="oval"
        android:useLevel="true">
 
-    <solid android:color="@color/dotIndicatorActive" />
+    <solid android:color="@color/colorPrimary" />
     <size
             android:width="15dp"
             android:height="15dp" />

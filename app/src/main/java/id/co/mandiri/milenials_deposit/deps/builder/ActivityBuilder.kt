@@ -2,6 +2,7 @@ package id.co.mandiri.milenials_deposit.deps.builder
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import id.co.mandiri.milenials_deposit.section.login.LoginActivity
 import id.co.mandiri.milenials_deposit.section.main.MainActivity
 import id.co.mandiri.milenials_deposit.section.onboarding.OnboardingActivity
 
@@ -17,4 +18,7 @@ abstract class ActivityBuilder {
 
     @ContributesAndroidInjector
     abstract fun bindOnboardingActivity(): OnboardingActivity
+
+    @ContributesAndroidInjector
+    abstract fun bindLoginActivity(): LoginActivity
 }

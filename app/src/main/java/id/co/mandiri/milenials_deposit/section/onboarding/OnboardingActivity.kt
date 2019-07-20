@@ -10,14 +10,14 @@ import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import id.co.mandiri.corelibrary.commons.SliderPagerAdapter
+import id.co.mandiri.corelibrary.viewutils.ZoomOutPageTransformer
 import id.co.mandiri.milenials_deposit.R
 import id.co.mandiri.milenials_deposit.base.BaseActivity
 import id.co.mandiri.milenials_deposit.data.OnboardingModel
+import id.co.mandiri.milenials_deposit.section.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_onboarding.*
-import id.co.mandiri.corelibrary.viewutils.ZoomOutPageTransformer
-import id.co.mandiri.milenials_deposit.section.main.MainActivity
 
-class OnboardingActivity : BaseActivity(),  ViewPager.OnPageChangeListener  {
+class OnboardingActivity : BaseActivity(), ViewPager.OnPageChangeListener {
     companion object {
         const val NUM_PAGES = 3
     }
@@ -56,7 +56,7 @@ class OnboardingActivity : BaseActivity(),  ViewPager.OnPageChangeListener  {
         initViewPager()
         setupPagerIndicator(NUM_PAGES)
         btn_next.setOnClickListener {
-            startActivity(Intent(this@OnboardingActivity, MainActivity::class.java))
+            startActivity(Intent(this@OnboardingActivity, LoginActivity::class.java))
             finish()
         }
     }
@@ -68,7 +68,7 @@ class OnboardingActivity : BaseActivity(),  ViewPager.OnPageChangeListener  {
             indicators = ArrayList(NUM_PAGES)
         }
 
-        sliderAdapter =  SliderPagerAdapter(supportFragmentManager, fragmentList)
+        sliderAdapter = SliderPagerAdapter(supportFragmentManager, fragmentList)
 
 
         with(pager_slide) {
