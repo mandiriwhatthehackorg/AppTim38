@@ -24,7 +24,7 @@ class MainApp : DaggerApplication() {
         appComponent = DaggerAppComponent
             .builder()
             .create(this)
-            .networkModule(NetworkModule("https://apigateway.mandiriwhatthehack.com/gateway/"))
+            .networkModule(NetworkModule("http://apigateway.mandiriwhatthehack.com/"))
             .appModule(AppModule(this))
             .sharePreferenceModule(SharedPreferencesModule(SHAREDPREFERENCES_NAME,this))
             .build()

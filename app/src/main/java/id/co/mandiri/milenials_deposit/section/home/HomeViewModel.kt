@@ -1,6 +1,5 @@
 package id.co.mandiri.milenials_deposit.section.home
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
@@ -30,6 +29,7 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
         isLoading.postValue(true)
         val listDebitInformation = mutableListOf<DebitInformation>()
         listDebitInformation.clear()
+
 
         databaseFirestore.collection(TABLE_DEBIT)
             .whereEqualTo(USERNAME_FIELD, username)

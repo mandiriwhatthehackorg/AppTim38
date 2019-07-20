@@ -53,4 +53,8 @@
     <string name="text_add_nominal_package">%s/ Bulan</string>
     <string name="text_month">Bulan</string>
     <string name="text_year">Tahun</string>
+    <string name="text_name">Nama : %s</string>
+    <string name="text_phone">Nomor HP : %s</string>
+    <string name="text_address">Alamat : %s</string>
+    <string name="text_email">Email : %s</string>
 </resources>

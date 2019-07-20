@@ -19,13 +19,16 @@ import id.co.mandiri.milenials_deposit.base.BaseActivity
 import id.co.mandiri.milenials_deposit.data.firebase.DebitInformation
 import id.co.mandiri.milenials_deposit.section.addlifeplan.CreateLifePlanActivity
 import id.co.mandiri.milenials_deposit.section.login.LoginActivity.Companion.USERNAME
+import id.co.mandiri.milenials_deposit.section.profile.ProfileActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.content_home.*
 import javax.inject.Inject
 
 class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
-    private var progressStatus = 0
-    private val handler = Handler()
+    companion object {
+        const val CIF_NUMBER_TAG = "cifNumber"
+        const val ACCOUNT_NUMBER_TAG = "accountNumber"
+    }
 
     @Inject
     lateinit var homeViewModel: HomeViewModel
@@ -34,6 +37,11 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     lateinit var sharedPreferenceHelper: SharedPreferenceHelper
 
     private val listDebitInformation = mutableListOf<DebitInformation>()
+
+    private var cifNumber = ""
+    private var accountNumber = ""
+    private var progressStatus = 0
+    private val handler = Handler()
 
     override fun onSetupLayout(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_home)
@@ -104,7 +112,9 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
             observeDebitInformation().onResult {
                 listDebitInformation.addAll(it)
-                tv_account_number.text = it[0].accountNumber
+                tv_account_number.text = it.first().accountNumber
+                cifNumber = it.first().cifNumber.toString()
+                accountNumber = it.first().accountNumber.toString()
             }
 
             boundNetwork {
@@ -138,7 +148,10 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_profile -> {
-                // Handle the camera action
+               startActivity(Intent(this@HomeActivity, ProfileActivity::class.java).apply {
+                   putExtra(CIF_NUMBER_TAG, cifNumber)
+                   putExtra(ACCOUNT_NUMBER_TAG, accountNumber)
+               })
             }
             R.id.nav_lifeplan -> {
 

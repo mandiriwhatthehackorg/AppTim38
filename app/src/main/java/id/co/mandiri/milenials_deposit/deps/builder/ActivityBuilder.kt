@@ -6,6 +6,7 @@ import id.co.mandiri.milenials_deposit.section.addlifeplan.CreateLifePlanActivit
 import id.co.mandiri.milenials_deposit.section.home.HomeActivity
 import id.co.mandiri.milenials_deposit.section.login.LoginActivity
 import id.co.mandiri.milenials_deposit.section.onboarding.OnboardingActivity
+import id.co.mandiri.milenials_deposit.section.profile.ProfileActivity
 
 /**
  * Created by pertadima on 19,July,2019
@@ -24,5 +25,8 @@ abstract class ActivityBuilder {
     abstract fun bindLoginActivity(): LoginActivity
 
     @ContributesAndroidInjector
-    abstract fun createLifePlan(): CreateLifePlanActivity
+    abstract fun createLifePlanActivity(): CreateLifePlanActivity
+
+    @ContributesAndroidInjector
+    abstract fun profileActivity(): ProfileActivity
 }
