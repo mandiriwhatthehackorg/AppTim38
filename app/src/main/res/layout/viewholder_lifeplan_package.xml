@@ -36,6 +36,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
                 app:layout_constraintTop_toBottomOf="@id/tv_plan_for_title"
                 app:layout_constraintLeft_toLeftOf="parent"
+                android:visibility="gone"
+                android:id="@+id/child_view"
                 app:layout_constraintRight_toLeftOf="@id/img_arrow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

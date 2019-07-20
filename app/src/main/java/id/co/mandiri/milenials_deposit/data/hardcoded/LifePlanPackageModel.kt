@@ -10,5 +10,5 @@ class LifePlanPackageModel(
     val packageName: String,
     val duration: Double,
     val nominal: Double,
-    val isExpanded: Boolean
+    var isExpanded: Boolean
 )

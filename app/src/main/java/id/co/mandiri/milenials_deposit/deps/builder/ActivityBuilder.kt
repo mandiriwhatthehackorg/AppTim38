@@ -7,6 +7,7 @@ import id.co.mandiri.milenials_deposit.section.home.HomeActivity
 import id.co.mandiri.milenials_deposit.section.login.LoginActivity
 import id.co.mandiri.milenials_deposit.section.onboarding.OnboardingActivity
 import id.co.mandiri.milenials_deposit.section.profile.ProfileActivity
+import id.co.mandiri.milenials_deposit.section.verification.VerificationIntroductionActivity
 
 /**
  * Created by pertadima on 19,July,2019
@@ -29,4 +30,7 @@ abstract class ActivityBuilder {
 
     @ContributesAndroidInjector
     abstract fun profileActivity(): ProfileActivity
+
+    @ContributesAndroidInjector
+    abstract fun verificationIntroductionActivity(): VerificationIntroductionActivity
 }

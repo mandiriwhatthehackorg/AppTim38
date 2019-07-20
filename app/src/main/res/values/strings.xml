@@ -57,4 +57,16 @@
     <string name="text_phone">Nomor HP : %s</string>
     <string name="text_address">Alamat : %s</string>
     <string name="text_email">Email : %s</string>
+    <string name="text_verification">Verifikasi</string>
+    <string name="text_verification_desc">Sebelum melakukan pembukaan rekening baru. Kam akan melakukan verifikasi
+        untuk memastikan bahwa yang melakukan pembukaan rekening adalah anda sendiri +
+    </string>
+    <string name="text_verification_document">Mohon siapkan beberapa dokumen pendukung, antara lain :</string>
+    <string name="text_ktp">- KTP</string>
+    <string name="text_face">- Foto Wajah</string>
+    <string name="tv_signature">- Tanda Tangan</string>
+    <string name="text_understood_go">Mengerti dan Lanjutkan</string>
+    <string name="text_verification_title">Apakah kamu yakin menambahkan Life Plan untuk %s ?</string>
+    <string name="text_yes">Lanjutkan</string>
+    <string name="text_no">Tidak</string>
 </resources>

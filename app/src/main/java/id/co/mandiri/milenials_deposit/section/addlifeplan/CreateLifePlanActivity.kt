@@ -1,5 +1,6 @@
 package id.co.mandiri.milenials_deposit.section.addlifeplan
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.Toolbar
@@ -12,6 +13,8 @@ import id.co.mandiri.corelibrary.commons.toRupiah
 import id.co.mandiri.milenials_deposit.R
 import id.co.mandiri.milenials_deposit.base.BaseActivity
 import id.co.mandiri.milenials_deposit.data.hardcoded.LifePlanPackageModel
+import id.co.mandiri.milenials_deposit.section.verification.VerificationDialogFragment
+import id.co.mandiri.milenials_deposit.section.verification.VerificationIntroductionActivity
 import kotlinx.android.synthetic.main.activity_create_life_plan.*
 import kotlinx.android.synthetic.main.default_toolbar.view.*
 import kotlinx.android.synthetic.main.viewholder_lifeplan_package.view.*
@@ -28,14 +31,22 @@ class CreateLifePlanActivity : BaseActivity() {
         GeneralRecyclerView<LifePlanPackageModel>(
             diffCallback = diffCallback,
             holderResId = R.layout.viewholder_lifeplan_package,
+            specificResViewId = R.id.btn_saving,
             onBind = { data, view ->
                 bindViewHolder(data, view)
             },
-            itemListener = { data, _, _ ->
-
+            itemListener = { data, pos, view ->
+                collapsedItem(data, pos, view)
+            },
+            specificViewListener = { _, _, _ ->
+                fragmentTransaction = supportFragmentManager.beginTransaction()
+                fragmentTransaction.addToBackStack(null)
+                VerificationDialogFragment().show(fragmentTransaction, "DIALOG")
+                //startActivity(Intent(this@CreateLifePlanActivity, VerificationIntroductionActivity::class.java))
             }
         )
     }
+    var fragmentTransaction = supportFragmentManager.beginTransaction()
 
     override fun onSetupLayout(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_create_life_plan)
@@ -98,10 +109,13 @@ class CreateLifePlanActivity : BaseActivity() {
         }
 
         view.tv_plan_desc.text = getString(R.string.text_add_plan_package_desc, toRupiah(data.nominal), showDuration)
-
-
         view.tv_plan_price.text =
             getString(R.string.text_add_nominal_package, toRupiah(data.nominal / data.duration))
+        view.child_view.isVisible = data.isExpanded
     }
 
+    private fun collapsedItem(data: LifePlanPackageModel, pos: Int, view: View) {
+        data.isExpanded = !data.isExpanded
+        productAdapter.notifyItemChanged(pos)
+    }
 }

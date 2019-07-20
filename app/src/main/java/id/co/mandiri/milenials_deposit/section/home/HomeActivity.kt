@@ -67,9 +67,9 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     private fun hidingView() {
-        layout_empty.isVisible = true
-        layout_plan.isVisible = false
-        tv_life_plan_detail.isVisible = false
+        layout_empty.isVisible = false
+        layout_plan.isVisible = true
+        tv_life_plan_detail.isVisible = true
     }
 
     private fun animateProgressBar() {
@@ -154,7 +154,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                })
             }
             R.id.nav_lifeplan -> {
-
+                startActivity(Intent(this@HomeActivity, CreateLifePlanActivity::class.java))
             }
             R.id.nav_history_lifeplan -> {
 
