@@ -1,5 +1,6 @@
 package id.co.mandiri.milenials_deposit.section.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
@@ -16,6 +17,7 @@ import id.co.mandiri.corelibrary.sharedpreferences.SharedPreferenceHelper
 import id.co.mandiri.milenials_deposit.R
 import id.co.mandiri.milenials_deposit.base.BaseActivity
 import id.co.mandiri.milenials_deposit.data.firebase.DebitInformation
+import id.co.mandiri.milenials_deposit.section.addlifeplan.CreateLifePlanActivity
 import id.co.mandiri.milenials_deposit.section.login.LoginActivity.Companion.USERNAME
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.content_home.*
@@ -45,11 +47,21 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         initDrawerLayout()
         myAccountInformation()
         animateProgressBar()
+        hidingView()
+
+        btn_add_life_plan.setOnClickListener {
+            startActivity(Intent(this@HomeActivity, CreateLifePlanActivity::class.java))
+        }
     }
 
     private fun myAccountInformation() {
         tv_account_name.text = "Irfan Pertadima"
-        tv_account_number.text = "12345670"
+    }
+
+    private fun hidingView() {
+        layout_empty.isVisible = true
+        layout_plan.isVisible = false
+        tv_life_plan_detail.isVisible = false
     }
 
     private fun animateProgressBar() {
@@ -92,6 +104,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
             observeDebitInformation().onResult {
                 listDebitInformation.addAll(it)
+                tv_account_number.text = it[0].accountNumber
             }
 
             boundNetwork {

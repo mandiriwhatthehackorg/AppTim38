@@ -50,8 +50,7 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
             }
             .addOnFailureListener { e ->
                 isLoading.postValue(false)
-
-                Log.e("IRFAN", "${e.localizedMessage}: ");
+                isErrorFirebase.postValue(e.localizedMessage)
             }
     }
 }

@@ -46,8 +46,8 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            window.statusBarColor = ContextCompat.getColor(this, R.color.colorBlack)
-            val decorView = getWindow().decorView //set status background black
+            window.statusBarColor = ContextCompat.getColor(this, R.color.colorPrimary)
+            val decorView = window.decorView //set status background black
             decorView.systemUiVisibility =
                 decorView.systemUiVisibility and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR.inv()
         }

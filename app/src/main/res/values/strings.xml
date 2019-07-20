@@ -42,4 +42,15 @@
     <string name="text_menabung">Menabung</string>
     <string name="text_do_saving">Tabung</string>
     <string name="text_no_internet">Maaf tidak ada koneksi internet</string>
+    <string name="text_life_plan_desc">Kamu belum mempunyai atau membuat life plan. Buat sekarang dan rasakan kemudahan
+        menabung dari sekarang
+    </string>
+    <string name="text_dummy_scholl">Sekolah</string>
+    <string name="text_dummy_plan">Target Biaya Rp. 100.000.000 dalam 2 tahun</string>
+    <string name="text_dummy_plan_price">Rp.100.000.000/ Bulan</string>
+    <string name="text_add_plan_desc">Pilih sesuai kebutuhan anda</string>
+    <string name="text_add_plan_package_desc">Target Biaya %1s dalam %2s</string>
+    <string name="text_add_nominal_package">%s/ Bulan</string>
+    <string name="text_month">Bulan</string>
+    <string name="text_year">Tahun</string>
 </resources>
