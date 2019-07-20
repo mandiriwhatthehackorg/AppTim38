@@ -12,7 +12,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:windowSoftInputMode="stateVisible|adjustResize"
+        <activity android:windowSoftInputMode="adjustPan|adjustResize"
                   android:name=".section.login.LoginActivity">
         </activity>
         <activity android:name=".section.onboarding.OnboardingActivity">
