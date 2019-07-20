@@ -10,12 +10,16 @@ import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import id.co.mandiri.corelibrary.commons.SliderPagerAdapter
+import id.co.mandiri.corelibrary.sharedpreferences.SharedPreferenceHelper
 import id.co.mandiri.corelibrary.viewutils.ZoomOutPageTransformer
 import id.co.mandiri.milenials_deposit.R
 import id.co.mandiri.milenials_deposit.base.BaseActivity
 import id.co.mandiri.milenials_deposit.data.OnboardingModel
+import id.co.mandiri.milenials_deposit.section.home.HomeActivity
 import id.co.mandiri.milenials_deposit.section.login.LoginActivity
+import id.co.mandiri.milenials_deposit.section.login.LoginActivity.Companion.IS_LOGGED_IN
 import kotlinx.android.synthetic.main.activity_onboarding.*
+import javax.inject.Inject
 
 class OnboardingActivity : BaseActivity(), ViewPager.OnPageChangeListener {
     companion object {
@@ -48,8 +52,15 @@ class OnboardingActivity : BaseActivity(), ViewPager.OnPageChangeListener {
     private lateinit var sliderAdapter: SliderPagerAdapter
 
 
+    @Inject
+    lateinit var sharedPreferenceHelper: SharedPreferenceHelper
+
     override fun onSetupLayout(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_onboarding)
+        if (sharedPreferenceHelper.getBoolean(IS_LOGGED_IN)) {
+            startActivity(Intent(this@OnboardingActivity, HomeActivity::class.java))
+            finish()
+        }
     }
 
     override fun onViewReady(savedInstanceState: Bundle?) {

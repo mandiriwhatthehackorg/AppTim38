@@ -101,6 +101,7 @@ dependencies {
 
     // FIREBASE
     implementation 'com.google.firebase:firebase-core:17.0.1'
+    implementation 'com.google.firebase:firebase-firestore:20.1.0'
 
     kapt 'com.github.bumptech.glide:compiler:4.7.1'
     testImplementation 'junit:junit:4.12'

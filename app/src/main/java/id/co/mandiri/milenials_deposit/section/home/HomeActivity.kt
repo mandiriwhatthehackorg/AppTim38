@@ -35,8 +35,8 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     private fun myAccountInformation() {
-        tv_account_name.text = getString(R.string.text_my_name, "Irfan Pertadima")
-        tv_account_number.text = getString(R.string.text_my_account_number, "1234567897")
+        tv_account_name.text = "Irfan Pertadima"
+        tv_account_number.text = "12345670"
     }
 
     private fun animateProgressBar() {

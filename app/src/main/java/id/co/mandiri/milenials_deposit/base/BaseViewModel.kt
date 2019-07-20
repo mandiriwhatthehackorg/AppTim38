@@ -18,7 +18,7 @@ import io.reactivex.schedulers.Schedulers
 abstract class BaseViewModel : ViewModel() {
     protected var disposables = CompositeDisposable()
 
-    private val isLoading = MutableLiveData<Boolean>()
+    val isLoading = MutableLiveData<Boolean>()
     fun observeLoading(): LiveData<Boolean> = isLoading
 
     protected val isError = MutableLiveData<NetworkError?>()

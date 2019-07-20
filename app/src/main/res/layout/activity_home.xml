@@ -54,26 +54,34 @@
 
                 <LinearLayout
                         android:layout_width="match_parent"
-                        android:padding="20dp"
                         android:orientation="vertical"
+                        android:paddingBottom="20dp"
                         android:layout_height="wrap_content">
+                    <ImageView
+                            android:layout_width="match_parent"
+                            android:background="@color/colorYellowMandiri"
+                            android:layout_marginTop="30dp"
+                            android:layout_height="30dp"/>
+
                     <TextView
                             android:layout_width="match_parent"
-                            android:fontFamily="@font/myriadpro_semibold"
+                            android:fontFamily="@font/myriadpro_bold"
                             android:textColor="@color/colorBlack"
-                            android:textSize="16sp"
-                            android:id="@+id/tv_account_name"
-                            tools:text="Nama Saya : Irfan Pertadima"
+                            android:textSize="18sp"
+                            style="@style/DefaultMargin"
+                            android:id="@+id/tv_account_number"
+                            android:layout_marginTop="10dp"
+                            tools:text="No Rekening : 123456789"
                             android:layout_height="wrap_content"/>
 
                     <TextView
                             android:layout_width="match_parent"
-                            android:fontFamily="@font/myriadpro_semibold"
+                            style="@style/DefaultMargin"
+                            android:fontFamily="@font/myriadpro_regular"
                             android:textColor="@color/colorBlack"
-                            android:textSize="16sp"
-                            android:id="@+id/tv_account_number"
-                            android:layout_marginTop="10dp"
-                            tools:text="No Rekening : 123456789"
+                            android:textSize="14sp"
+                            android:id="@+id/tv_account_name"
+                            tools:text="Nama Saya : Irfan Pertadima"
                             android:layout_height="wrap_content"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

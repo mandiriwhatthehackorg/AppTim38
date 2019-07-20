@@ -41,4 +41,5 @@
     <string name="dummy_future">Rp 100.000.000</string>
     <string name="text_menabung">Menabung</string>
     <string name="text_do_saving">Tabung</string>
+    <string name="text_no_internet">Maaf tidak ada koneksi internet</string>
 </resources>
