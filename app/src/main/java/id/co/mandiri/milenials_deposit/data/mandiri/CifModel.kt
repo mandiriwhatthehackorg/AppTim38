@@ -1,4 +1,4 @@
-package id.co.mandiri.milenials_deposit.data
+package id.co.mandiri.milenials_deposit.data.mandiri
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,4 +1,4 @@
-package id.co.mandiri.milenials_deposit.data
+package id.co.mandiri.milenials_deposit.data.firebase
 
 /**
  * Created by pertadima on 20,July,2019

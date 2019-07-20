@@ -15,6 +15,7 @@ import id.co.mandiri.corelibrary.commons.showToast
 import id.co.mandiri.corelibrary.sharedpreferences.SharedPreferenceHelper
 import id.co.mandiri.milenials_deposit.R
 import id.co.mandiri.milenials_deposit.base.BaseActivity
+import id.co.mandiri.milenials_deposit.data.firebase.DebitInformation
 import id.co.mandiri.milenials_deposit.section.login.LoginActivity.Companion.USERNAME
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.content_home.*
@@ -29,6 +30,8 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     @Inject
     lateinit var sharedPreferenceHelper: SharedPreferenceHelper
+
+    private val listDebitInformation = mutableListOf<DebitInformation>()
 
     override fun onSetupLayout(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_home)
@@ -85,6 +88,10 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
             observeErrorFirebase().onResult {
                 showToast(it.toString())
+            }
+
+            observeDebitInformation().onResult {
+                listDebitInformation.addAll(it)
             }
 
             boundNetwork {

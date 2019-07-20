@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
 import id.co.mandiri.milenials_deposit.base.BaseViewModel
-import id.co.mandiri.milenials_deposit.data.FirebaseAuthModel
+import id.co.mandiri.milenials_deposit.data.firebase.FirebaseAuthModel
 import javax.inject.Inject
 
 /**
@@ -40,7 +40,12 @@ class LoginViewModel @Inject constructor() : BaseViewModel() {
                     isErrorLogin.postValue("Maaf, login gagal. Pastikan username dan password kamu benar")
                 } else {
                     documentReference.forEach { data ->
-                        isSuccessLogin.postValue(FirebaseAuthModel(true, "${data.data["username"]}"))
+                        isSuccessLogin.postValue(
+                            FirebaseAuthModel(
+                                true,
+                                "${data.data["username"]}"
+                            )
+                        )
                     }
                 }
             }
