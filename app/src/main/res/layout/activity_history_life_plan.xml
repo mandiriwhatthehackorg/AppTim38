@@ -38,10 +38,10 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:textSize="18sp"
+                android:id="@+id/tv_saving_info"
                 android:fontFamily="@font/myriadpro_bold"
                 android:textColor="@color/colorPrimary"
                 android:layout_alignParentEnd="true"
-                android:text="@string/dummy_savin"
                 android:layout_height="wrap_content"/>
     </RelativeLayout>
 

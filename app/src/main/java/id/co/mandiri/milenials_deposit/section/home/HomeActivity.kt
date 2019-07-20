@@ -3,6 +3,7 @@ package id.co.mandiri.milenials_deposit.section.home
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -32,6 +33,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     companion object {
         const val CIF_NUMBER_TAG = "cifNumber"
         const val ACCOUNT_NUMBER_TAG = "accountNumber"
+        const val NEW_ACCOUNT = "newAccount"
     }
 
     @Inject
@@ -47,6 +49,8 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     private var progressStatus = 0
     private val handler = Handler()
 
+    private var isNew = true
+
     override fun onSetupLayout(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_home)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
@@ -60,7 +64,9 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         myAccountInformation()
 
         btn_add_life_plan.setOnClickListener {
-            startActivity(Intent(this@HomeActivity, CreateLifePlanActivity::class.java))
+            startActivity(Intent(this@HomeActivity, CreateLifePlanActivity::class.java).apply {
+                putExtra(NEW_ACCOUNT, isNew)
+            })
         }
     }
 
@@ -85,7 +91,6 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             }
 
             observeLoadingSaving().onResult {
-                layout_plan.isInvisible = it
                 progress_bar_saving.isVisible = it
             }
 
@@ -105,7 +110,10 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 layout_empty.isVisible = it.isEmpty()
                 layout_plan.isVisible = it.isNotEmpty()
                 tv_life_plan_detail.isVisible = it.isNotEmpty()
-                bindSavingView(it.first())
+                if (it.isNotEmpty()) {
+                    bindSavingView(it.first())
+                }
+                isNew = it.isEmpty()
             }
 
 

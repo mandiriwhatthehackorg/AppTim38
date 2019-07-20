@@ -71,4 +71,10 @@
     <string name="text_no">Tidak</string>
     <string name="text_saving_info">Info Tabungan</string>
     <string name="dummy_savin">Rp 100.000.000,0</string>
+    <string name="text_ktp_verification">Verifikasi KTP</string>
+    <string name="text_take_ktp">Ambil Gambar KTP</string>
+    <string name="text_selfie_verification">Verifikasi Foto Diri</string>
+    <string name="text_selfie">Ambil Foto Selfie</string>
+    <string name="text_take_signature">Ambil Foto Tanda Tangan</string>
+    <string name="text_verifikasi_tanda_tangan">Verifikasi Tanda Tangan</string>
 </resources>

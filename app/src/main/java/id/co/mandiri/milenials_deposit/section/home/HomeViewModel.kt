@@ -1,5 +1,6 @@
 package id.co.mandiri.milenials_deposit.section.home
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
@@ -64,6 +65,8 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
     fun getSavingInformation() {
         isLoadingSaving.postValue(true)
         val listSavingInformaiton = mutableListOf<SavingAuthModel>()
+
+        savingInformation.postValue(listSavingInformaiton)
 
         databaseFirestore.collection("saving")
             .get()

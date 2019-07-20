@@ -12,6 +12,7 @@ import id.co.mandiri.corelibrary.commons.toRupiah
 import id.co.mandiri.milenials_deposit.R
 import id.co.mandiri.milenials_deposit.base.BaseActivity
 import id.co.mandiri.milenials_deposit.data.hardcoded.LifePlanPackageModel
+import id.co.mandiri.milenials_deposit.section.home.HomeActivity.Companion.NEW_ACCOUNT
 import id.co.mandiri.milenials_deposit.section.verification.VerificationDialogFragment
 import kotlinx.android.synthetic.main.activity_create_life_plan.*
 import kotlinx.android.synthetic.main.default_toolbar.view.*
@@ -36,15 +37,17 @@ class CreateLifePlanActivity : BaseActivity() {
             itemListener = { data, pos, view ->
                 collapsedItem(data, pos, view)
             },
-            specificViewListener = { _, _, _ ->
+            specificViewListener = { data, _, _ ->
                 fragmentTransaction = supportFragmentManager.beginTransaction()
                 fragmentTransaction.addToBackStack(null)
-                VerificationDialogFragment().show(fragmentTransaction, "DIALOG")
-                //startActivity(Intent(this@CreateLifePlanActivity, VerificationIntroductionActivity::class.java))
+
+                VerificationDialogFragment().newInstance(data.packageName, (data.nominal / data.duration), isNew)
+                    .show(fragmentTransaction, "DIALOG")
             }
         )
     }
     private var fragmentTransaction = supportFragmentManager.beginTransaction()
+    private var isNew = true
 
     override fun onSetupLayout(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_create_life_plan)
@@ -58,6 +61,7 @@ class CreateLifePlanActivity : BaseActivity() {
     override fun onViewReady(savedInstanceState: Bundle?) {
         initRecycleView()
         observeViewModel()
+        isNew = intent.getBooleanExtra(NEW_ACCOUNT, true)
     }
 
     private fun initRecycleView() {

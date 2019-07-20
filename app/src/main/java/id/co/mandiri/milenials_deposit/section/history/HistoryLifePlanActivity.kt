@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.default_toolbar.view.*
 import kotlinx.android.synthetic.main.viewholder_saving_history.view.*
 import javax.inject.Inject
 
+
 class HistoryLifePlanActivity : BaseActivity() {
     @Inject
     lateinit var historyLifePlanViewModel: HistoryLifePlanViewModel
@@ -44,7 +45,7 @@ class HistoryLifePlanActivity : BaseActivity() {
     }
 
     private var fragmentTransaction = supportFragmentManager.beginTransaction()
-
+    private var nominal = 0.0
     override fun onSetupLayout(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_history_life_plan)
         setupToolbarPropertiesWithBackButton(
@@ -80,6 +81,10 @@ class HistoryLifePlanActivity : BaseActivity() {
 
             observeSavingInformation().onResult {
                 savingAdapter.setData(it)
+                it.forEach { data ->
+                    nominal += (data.nominal!! / data.duration!!) * data.done!!
+                }
+                tv_saving_info.text = toRupiah(nominal)
             }
 
             boundNetwork {
@@ -100,4 +105,6 @@ class HistoryLifePlanActivity : BaseActivity() {
         view.progress.progress = ((data.done / data.duration) * 100).toInt()
         view.tv_plan_for_title.text = data.name
     }
+
+
 }

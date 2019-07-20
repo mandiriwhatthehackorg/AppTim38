@@ -4,6 +4,7 @@
           package="id.co.mandiri.milenials_deposit">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
             android:name=".MainApp"
@@ -15,6 +16,12 @@
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true"
             tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".section.verification.VerificationSignatureActivity">
+        </activity>
+        <activity android:name=".section.verification.VerificationSelfieActivity">
+        </activity>
+        <activity android:name=".section.verification.VerificationKtpActivity">
+        </activity>
         <activity android:name=".section.history.HistoryLifePlanActivity">
         </activity>
         <activity android:name=".section.verification.VerificationIntroductionActivity">

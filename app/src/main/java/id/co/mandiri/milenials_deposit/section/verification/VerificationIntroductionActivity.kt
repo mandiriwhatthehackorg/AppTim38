@@ -1,5 +1,6 @@
 package id.co.mandiri.milenials_deposit.section.verification
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import id.co.mandiri.milenials_deposit.R
@@ -18,6 +19,8 @@ class VerificationIntroductionActivity : BaseActivity() {
     }
 
     override fun onViewReady(savedInstanceState: Bundle?) {
-
+        btn_add_life_plan.setOnClickListener {
+            startActivity(Intent(this@VerificationIntroductionActivity, VerificationKtpActivity::class.java))
+        }
     }
 }

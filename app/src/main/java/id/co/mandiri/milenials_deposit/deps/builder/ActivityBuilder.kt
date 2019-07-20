@@ -9,6 +9,9 @@ import id.co.mandiri.milenials_deposit.section.login.LoginActivity
 import id.co.mandiri.milenials_deposit.section.onboarding.OnboardingActivity
 import id.co.mandiri.milenials_deposit.section.profile.ProfileActivity
 import id.co.mandiri.milenials_deposit.section.verification.VerificationIntroductionActivity
+import id.co.mandiri.milenials_deposit.section.verification.VerificationKtpActivity
+import id.co.mandiri.milenials_deposit.section.verification.VerificationSelfieActivity
+import id.co.mandiri.milenials_deposit.section.verification.VerificationSignatureActivity
 
 /**
  * Created by pertadima on 19,July,2019
@@ -37,4 +40,13 @@ abstract class ActivityBuilder {
 
     @ContributesAndroidInjector
     abstract fun historyLifePlanActivity(): HistoryLifePlanActivity
+
+    @ContributesAndroidInjector
+    abstract fun verificationKtpActivity(): VerificationKtpActivity
+
+    @ContributesAndroidInjector
+    abstract fun verificationSelfieActivity(): VerificationSelfieActivity
+
+    @ContributesAndroidInjector
+    abstract fun verificationSignatureActivity(): VerificationSignatureActivity
 }
