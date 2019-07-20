@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "76633394790",
+    "firebase_url": "https://mandirideposits.firebaseio.com",
+    "project_id": "mandirideposits",
+    "storage_bucket": "mandirideposits.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76633394790:android:3ffe9a956937e860",
+        "android_client_info": {
+          "package_name": "id.co.mandiri.milenials_deposit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "76633394790-4e39pojj8lenlfjvntkevo6c7q6app6p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.co.mandiri.milenials_deposit",
+            "certificate_hash": "ae856edbafbd17fbab289d2cf079a179f9fadf5a"
+          }
+        },
+        {
+          "client_id": "76633394790-u7ujj0riujivpla25qnbsp46c6sicc63.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiao8JSXWVIsMuyi6J9-zRqrKiMcFZhes"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "76633394790-u7ujj0riujivpla25qnbsp46c6sicc63.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

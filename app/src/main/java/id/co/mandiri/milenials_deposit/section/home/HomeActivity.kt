@@ -51,7 +51,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 }
 
                 handler.post {
-                    progress.setProgress(progressStatus)
+                    progress.progress = progressStatus
                 }
             }
         }).start()

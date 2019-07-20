@@ -1,5 +1,6 @@
 package id.co.mandiri.milenials_deposit
 
+import com.google.firebase.FirebaseApp
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import id.co.mandiri.corelibrary.network.NetworkModule
@@ -29,5 +30,10 @@ class MainApp : DaggerApplication() {
             .build()
         appComponent.inject(this)
         return appComponent
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        FirebaseApp.initializeApp(this)
     }
 }
