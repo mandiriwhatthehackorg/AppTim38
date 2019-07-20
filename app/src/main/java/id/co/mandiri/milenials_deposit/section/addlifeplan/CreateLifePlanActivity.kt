@@ -1,6 +1,5 @@
 package id.co.mandiri.milenials_deposit.section.addlifeplan
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.Toolbar
@@ -14,7 +13,6 @@ import id.co.mandiri.milenials_deposit.R
 import id.co.mandiri.milenials_deposit.base.BaseActivity
 import id.co.mandiri.milenials_deposit.data.hardcoded.LifePlanPackageModel
 import id.co.mandiri.milenials_deposit.section.verification.VerificationDialogFragment
-import id.co.mandiri.milenials_deposit.section.verification.VerificationIntroductionActivity
 import kotlinx.android.synthetic.main.activity_create_life_plan.*
 import kotlinx.android.synthetic.main.default_toolbar.view.*
 import kotlinx.android.synthetic.main.viewholder_lifeplan_package.view.*
@@ -46,7 +44,7 @@ class CreateLifePlanActivity : BaseActivity() {
             }
         )
     }
-    var fragmentTransaction = supportFragmentManager.beginTransaction()
+    private var fragmentTransaction = supportFragmentManager.beginTransaction()
 
     override fun onSetupLayout(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_create_life_plan)

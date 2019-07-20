@@ -15,6 +15,8 @@
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true"
             tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".section.history.HistoryLifePlanActivity">
+        </activity>
         <activity android:name=".section.verification.VerificationIntroductionActivity">
         </activity>
         <activity android:name=".section.profile.ProfileActivity">
@@ -28,7 +30,7 @@
         </activity>
         <activity
                 android:name=".section.login.LoginActivity"
-                android:windowSoftInputMode="adjustPan|adjustResize">
+                android:windowSoftInputMode="stateHidden|adjustResize">
         </activity>
         <activity android:name=".section.onboarding.OnboardingActivity">
             <intent-filter>

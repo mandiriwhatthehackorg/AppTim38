@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
 import id.co.mandiri.milenials_deposit.base.BaseViewModel
 import id.co.mandiri.milenials_deposit.data.firebase.DebitInformation
+import id.co.mandiri.milenials_deposit.data.firebase.SavingAuthModel
 import javax.inject.Inject
 
 /**
@@ -24,6 +25,12 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
 
     private val debitInformation = MutableLiveData<List<DebitInformation>>()
     fun observeDebitInformation(): LiveData<List<DebitInformation>> = debitInformation
+
+    private val isLoadingSaving = MutableLiveData<Boolean>()
+    fun observeLoadingSaving(): LiveData<Boolean> = isLoadingSaving
+
+    private val savingInformation = MutableLiveData<List<SavingAuthModel>>()
+    fun observeSavingInformation(): LiveData<List<SavingAuthModel>> = savingInformation
 
     fun getUserAccountInformation(username: String) {
         isLoading.postValue(true)
@@ -50,6 +57,34 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
             }
             .addOnFailureListener { e ->
                 isLoading.postValue(false)
+                isErrorFirebase.postValue(e.localizedMessage)
+            }
+    }
+
+    fun getSavingInformation() {
+        isLoadingSaving.postValue(true)
+        val listSavingInformaiton = mutableListOf<SavingAuthModel>()
+
+        databaseFirestore.collection("saving")
+            .get()
+            .addOnSuccessListener { documentReference ->
+                isLoadingSaving.postValue(false)
+                listSavingInformaiton.clear()
+                documentReference.forEach { dataQuery ->
+                    listSavingInformaiton.add(
+                        SavingAuthModel(
+                            "${dataQuery.data["name"]}",
+                            "${dataQuery.data["duedate"]}",
+                            "${dataQuery.data["nominal"]}".toDouble(),
+                            "${dataQuery.data["duration"]}".toDouble(),
+                            "${dataQuery.data["done"]}".toInt()
+                        )
+                    )
+                    savingInformation.postValue(listSavingInformaiton)
+                }
+            }
+            .addOnFailureListener { e ->
+                isLoadingSaving.postValue(false)
                 isErrorFirebase.postValue(e.localizedMessage)
             }
     }

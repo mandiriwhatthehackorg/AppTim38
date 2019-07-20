@@ -69,4 +69,6 @@
     <string name="text_verification_title">Apakah kamu yakin menambahkan Life Plan untuk %s ?</string>
     <string name="text_yes">Lanjutkan</string>
     <string name="text_no">Tidak</string>
+    <string name="text_saving_info">Info Tabungan</string>
+    <string name="dummy_savin">Rp 100.000.000,0</string>
 </resources>

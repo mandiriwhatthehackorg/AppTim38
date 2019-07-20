@@ -26,7 +26,7 @@
             android:layout_marginTop="50dp"
             android:textAlignment="center"
             android:fontFamily="@font/myriadpro_bold"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorWhite"
             android:textSize="22sp"
             style="@style/DefaultMargin"
             app:layout_constraintTop_toBottomOf="@id/image_onboarding"
@@ -40,7 +40,7 @@
             style="@style/DefaultMargin"
             android:textAlignment="center"
             android:fontFamily="@font/myriadpro_regular"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorWhite"
             android:textSize="14sp"
             app:layout_constraintTop_toBottomOf="@id/title_onboarding"
             android:text="@string/text_dummy_onboarding_desc"/>

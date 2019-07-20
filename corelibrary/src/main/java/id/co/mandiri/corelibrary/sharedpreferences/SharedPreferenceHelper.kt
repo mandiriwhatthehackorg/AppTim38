@@ -30,4 +30,8 @@ open class SharedPreferenceHelper(private val sharedPreference: SharedPreference
     open fun getInt(key: String) = sharedPreference.getInt(key, 0)
 
     open fun getLong(key: String) = sharedPreference.getLong(key, 0)
+
+    open fun clearSharedPreferences() {
+        sharedPreference.edit().clear().apply()
+    }
 }

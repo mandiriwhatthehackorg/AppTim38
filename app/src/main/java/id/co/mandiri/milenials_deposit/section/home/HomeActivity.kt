@@ -18,6 +18,8 @@ import id.co.mandiri.milenials_deposit.R
 import id.co.mandiri.milenials_deposit.base.BaseActivity
 import id.co.mandiri.milenials_deposit.data.firebase.DebitInformation
 import id.co.mandiri.milenials_deposit.section.addlifeplan.CreateLifePlanActivity
+import id.co.mandiri.milenials_deposit.section.history.HistoryLifePlanActivity
+import id.co.mandiri.milenials_deposit.section.login.LoginActivity
 import id.co.mandiri.milenials_deposit.section.login.LoginActivity.Companion.USERNAME
 import id.co.mandiri.milenials_deposit.section.profile.ProfileActivity
 import kotlinx.android.synthetic.main.activity_home.*
@@ -55,7 +57,6 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         initDrawerLayout()
         myAccountInformation()
         animateProgressBar()
-        hidingView()
 
         btn_add_life_plan.setOnClickListener {
             startActivity(Intent(this@HomeActivity, CreateLifePlanActivity::class.java))
@@ -63,13 +64,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     private fun myAccountInformation() {
-        tv_account_name.text = "Irfan Pertadima"
-    }
-
-    private fun hidingView() {
-        layout_empty.isVisible = false
-        layout_plan.isVisible = true
-        tv_life_plan_detail.isVisible = true
+        tv_account_name.text = "Nomor Rekening"
     }
 
     private fun animateProgressBar() {
@@ -106,6 +101,11 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 progress_bar.isVisible = it
             }
 
+            observeLoadingSaving().onResult {
+                layout_plan.isInvisible = it
+                progress_bar_saving.isVisible = it
+            }
+
             observeErrorFirebase().onResult {
                 showToast(it.toString())
             }
@@ -116,6 +116,14 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 cifNumber = it.first().cifNumber.toString()
                 accountNumber = it.first().accountNumber.toString()
             }
+
+
+            observeSavingInformation().onResult {
+                layout_empty.isVisible = it.isEmpty()
+                layout_plan.isVisible = it.isNotEmpty()
+                tv_life_plan_detail.isVisible = it.isNotEmpty()
+            }
+
 
             boundNetwork {
                 if (it) {
@@ -157,7 +165,12 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 startActivity(Intent(this@HomeActivity, CreateLifePlanActivity::class.java))
             }
             R.id.nav_history_lifeplan -> {
-
+                startActivity(Intent(this@HomeActivity, HistoryLifePlanActivity::class.java))
+            }
+            R.id.action_logout -> {
+                sharedPreferenceHelper.clearSharedPreferences()
+                startActivity(Intent(this@HomeActivity, LoginActivity::class.java))
+                finishAffinity()
             }
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
