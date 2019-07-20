@@ -7,19 +7,28 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import id.co.mandiri.corelibrary.commons.showToast
+import id.co.mandiri.corelibrary.sharedpreferences.SharedPreferenceHelper
 import id.co.mandiri.milenials_deposit.R
 import id.co.mandiri.milenials_deposit.base.BaseActivity
+import id.co.mandiri.milenials_deposit.section.login.LoginActivity.Companion.USERNAME
 import kotlinx.android.synthetic.main.activity_home.*
-
-
-
-
+import kotlinx.android.synthetic.main.content_home.*
+import javax.inject.Inject
 
 class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
     private var progressStatus = 0
     private val handler = Handler()
+
+    @Inject
+    lateinit var homeViewModel: HomeViewModel
+
+    @Inject
+    lateinit var sharedPreferenceHelper: SharedPreferenceHelper
 
     override fun onSetupLayout(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_home)
@@ -29,6 +38,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun onViewReady(savedInstanceState: Bundle?) {
+        observeViewModel()
         initDrawerLayout()
         myAccountInformation()
         animateProgressBar()
@@ -64,6 +74,29 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
+    }
+
+    private fun observeViewModel() {
+        with(homeViewModel) {
+            observeLoading().onResult {
+                linearLayout.isInvisible = it
+                progress_bar.isVisible = it
+            }
+
+            observeErrorFirebase().onResult {
+                showToast(it.toString())
+            }
+
+            boundNetwork {
+                if (it) {
+                    sharedPreferenceHelper.getString(USERNAME)?.let { username ->
+                        homeViewModel.getUserAccountInformation(username)
+                    }
+                } else {
+                    showToast(getString(R.string.text_no_internet))
+                }
+            }
+        }
     }
 
     override fun onBackPressed() {
