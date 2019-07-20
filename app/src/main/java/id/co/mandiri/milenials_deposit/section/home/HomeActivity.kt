@@ -13,10 +13,12 @@ import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import id.co.mandiri.corelibrary.commons.showToast
+import id.co.mandiri.corelibrary.commons.toRupiah
 import id.co.mandiri.corelibrary.sharedpreferences.SharedPreferenceHelper
 import id.co.mandiri.milenials_deposit.R
 import id.co.mandiri.milenials_deposit.base.BaseActivity
 import id.co.mandiri.milenials_deposit.data.firebase.DebitInformation
+import id.co.mandiri.milenials_deposit.data.firebase.SavingAuthModel
 import id.co.mandiri.milenials_deposit.section.addlifeplan.CreateLifePlanActivity
 import id.co.mandiri.milenials_deposit.section.history.HistoryLifePlanActivity
 import id.co.mandiri.milenials_deposit.section.login.LoginActivity
@@ -56,7 +58,6 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         observeViewModel()
         initDrawerLayout()
         myAccountInformation()
-        animateProgressBar()
 
         btn_add_life_plan.setOnClickListener {
             startActivity(Intent(this@HomeActivity, CreateLifePlanActivity::class.java))
@@ -65,24 +66,6 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     private fun myAccountInformation() {
         tv_account_name.text = "Nomor Rekening"
-    }
-
-    private fun animateProgressBar() {
-        Thread(Runnable {
-            while (progressStatus < 50) {
-                progressStatus += 1
-
-                try {
-                    Thread.sleep(20)
-                } catch (e: InterruptedException) {
-                    e.printStackTrace()
-                }
-
-                handler.post {
-                    progress.progress = progressStatus
-                }
-            }
-        }).start()
     }
 
     private fun initDrawerLayout() {
@@ -122,6 +105,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 layout_empty.isVisible = it.isEmpty()
                 layout_plan.isVisible = it.isNotEmpty()
                 tv_life_plan_detail.isVisible = it.isNotEmpty()
+                bindSavingView(it.first())
             }
 
 
@@ -129,12 +113,37 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 if (it) {
                     sharedPreferenceHelper.getString(USERNAME)?.let { username ->
                         homeViewModel.getUserAccountInformation(username)
+                        homeViewModel.getSavingInformation()
                     }
                 } else {
                     showToast(getString(R.string.text_no_internet))
                 }
             }
         }
+    }
+
+    private fun bindSavingView(data: SavingAuthModel) {
+        future_value.text = toRupiah(data.nominal!!)
+        current_value.text = toRupiah((data.nominal / data.duration!!) * data.done!!.toDouble())
+        saving_value.text = toRupiah(data.nominal / data.duration)
+        tv_persentage.text = "${((data.done / data.duration) * 100).toInt()}%"
+        tv_plan_for_title.text = data.name
+
+        Thread(Runnable {
+            while (progressStatus < ((data.done / data.duration) * 100).toInt()) {
+                progressStatus += 1
+
+                try {
+                    Thread.sleep(20)
+                } catch (e: InterruptedException) {
+                    e.printStackTrace()
+                }
+
+                handler.post {
+                    progress.progress = progressStatus
+                }
+            }
+        }).start()
     }
 
     override fun onBackPressed() {
@@ -156,10 +165,10 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_profile -> {
-               startActivity(Intent(this@HomeActivity, ProfileActivity::class.java).apply {
-                   putExtra(CIF_NUMBER_TAG, cifNumber)
-                   putExtra(ACCOUNT_NUMBER_TAG, accountNumber)
-               })
+                startActivity(Intent(this@HomeActivity, ProfileActivity::class.java).apply {
+                    putExtra(CIF_NUMBER_TAG, cifNumber)
+                    putExtra(ACCOUNT_NUMBER_TAG, accountNumber)
+                })
             }
             R.id.nav_lifeplan -> {
                 startActivity(Intent(this@HomeActivity, CreateLifePlanActivity::class.java))
