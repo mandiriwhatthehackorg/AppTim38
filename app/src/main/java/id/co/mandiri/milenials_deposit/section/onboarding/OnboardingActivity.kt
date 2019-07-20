@@ -1,5 +1,6 @@
 package id.co.mandiri.milenials_deposit.section.onboarding
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.widget.ImageView
@@ -14,6 +15,7 @@ import id.co.mandiri.milenials_deposit.base.BaseActivity
 import id.co.mandiri.milenials_deposit.data.OnboardingModel
 import kotlinx.android.synthetic.main.activity_onboarding.*
 import id.co.mandiri.corelibrary.viewutils.ZoomOutPageTransformer
+import id.co.mandiri.milenials_deposit.section.main.MainActivity
 
 class OnboardingActivity : BaseActivity(),  ViewPager.OnPageChangeListener  {
     companion object {
@@ -52,6 +54,11 @@ class OnboardingActivity : BaseActivity(),  ViewPager.OnPageChangeListener  {
 
     override fun onViewReady(savedInstanceState: Bundle?) {
         initViewPager()
+        setupPagerIndicator(NUM_PAGES)
+        btn_next.setOnClickListener {
+            startActivity(Intent(this@OnboardingActivity, MainActivity::class.java))
+            finish()
+        }
     }
 
     private fun initViewPager() {
@@ -69,8 +76,6 @@ class OnboardingActivity : BaseActivity(),  ViewPager.OnPageChangeListener  {
             addOnPageChangeListener(this@OnboardingActivity)
             setPageTransformer(true, ZoomOutPageTransformer())
         }
-
-        setupPagerIndicator(NUM_PAGES)
     }
 
     private fun setupPagerIndicator(size: Int) {
