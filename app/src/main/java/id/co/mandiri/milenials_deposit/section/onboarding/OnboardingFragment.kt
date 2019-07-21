@@ -36,7 +36,7 @@ class OnboardingFragment : Fragment() {
         arguments?.let {
             title_onboarding.text = it.getString(TITLE_CONTENT)
             desc_onboarding.text = it.getString(CONTENT)
-            image_onboarding.setImageResource(it.getInt(IMAGE_CONTENT))
+           // image_onboarding.setImageResource(it.getInt(IMAGE_CONTENT))
         }
     }
 
