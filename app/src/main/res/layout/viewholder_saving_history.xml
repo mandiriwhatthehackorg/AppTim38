@@ -1,0 +1,163 @@
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="wrap_content" xmlns:tools="http://schemas.android.com/tools"
+        app:cardCornerRadius="5dp"
+        style="@style/DefaultMargin"
+        app:cardElevation="5dp"
+        android:layout_width="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            app:layout_constraintTop_toBottomOf="@id/line"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:padding="20dp"
+            android:id="@+id/layout_plan"
+            android:layout_height="wrap_content">
+        <ImageView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="wrap_content"
+                app:srcCompat="@drawable/ic_school"
+                android:id="@+id/ic_school"
+                app:tint="@color/colorPrimary"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_school"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/myriadpro_semibold"
+                android:textColor="@color/colorBlack"
+                android:id="@+id/tv_plan_for_title"
+                app:layout_constraintLeft_toRightOf="@id/ic_school"
+                app:layout_constraintTop_toTopOf="@id/ic_school"/>
+
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_dummy_presentage"
+                android:layout_marginStart="10dp"
+                android:textSize="18sp"
+                android:fontFamily="@font/myriadpro_semibold"
+                android:textColor="@color/colorBlack"
+                android:id="@+id/tv_persentage"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ic_school"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_dummy_duration"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:id="@+id/plan_duration"
+                android:fontFamily="@font/myriadpro_regular"
+                android:textSize="10sp"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintLeft_toRightOf="@id/ic_school"
+                app:layout_constraintTop_toBottomOf="@id/tv_plan_for_title"
+                tools:ignore="SmallSp"/>
+
+        <ProgressBar
+                android:id="@+id/progress"
+                app:layout_constraintTop_toBottomOf="@id/plan_duration"
+                android:layout_marginTop="20dp"
+                android:max="100"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:progressDrawable="@drawable/progressbar_vertical"/>
+
+        <TextView
+                app:layout_constraintTop_toBottomOf="@id/progress"
+                android:layout_marginTop="20dp"
+                android:layout_width="0dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:id="@+id/future_title"
+                android:textColor="@color/colorBlack"
+                android:textSize="12sp"
+                android:fontFamily="@font/myriadpro_regular"
+                app:layout_constraintRight_toLeftOf="@id/current_title"
+                android:text="@string/text_value_title"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                app:layout_constraintTop_toBottomOf="@id/progress"
+                android:layout_marginTop="20dp"
+                android:layout_width="0dp"
+                android:id="@+id/current_title"
+                android:textSize="12sp"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/myriadpro_regular"
+                app:layout_constraintLeft_toRightOf="@id/future_title"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="@string/text_current_value"
+                android:layout_height="wrap_content"/>
+
+
+        <TextView
+                app:layout_constraintTop_toBottomOf="@id/future_title"
+                android:layout_marginTop="5dp"
+                android:layout_width="0dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:id="@+id/future_value"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/myriadpro_semibold"
+                app:layout_constraintRight_toLeftOf="@id/current_title"
+                android:text="@string/dummy_future"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                app:layout_constraintTop_toBottomOf="@id/current_title"
+                android:layout_marginTop="5dp"
+                android:layout_width="0dp"
+                android:id="@+id/current_value"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/myriadpro_semibold"
+                app:layout_constraintLeft_toRightOf="@id/future_value"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="@string/dummy_future"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                app:layout_constraintTop_toBottomOf="@id/future_value"
+                android:layout_marginTop="20dp"
+                android:layout_width="0dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:id="@+id/saving_title"
+                android:textColor="@color/colorBlack"
+                android:textSize="12sp"
+                android:fontFamily="@font/myriadpro_regular"
+                app:layout_constraintRight_toLeftOf="@id/current_title"
+                android:text="@string/text_menabung"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                app:layout_constraintTop_toBottomOf="@id/saving_title"
+                android:layout_marginTop="5dp"
+                android:layout_width="0dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:id="@+id/saving_value"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/myriadpro_semibold"
+                app:layout_constraintRight_toLeftOf="@id/current_title"
+                android:text="@string/dummy_future"
+                android:layout_height="wrap_content"/>
+
+        <Button
+                app:layout_constraintTop_toBottomOf="@id/future_value"
+                android:layout_marginTop="20dp"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:id="@+id/btn_saving"
+                android:textSize="12sp"
+                android:background="@drawable/rounded_button_blue_active"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/myriadpro_semibold"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="@string/text_do_saving"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

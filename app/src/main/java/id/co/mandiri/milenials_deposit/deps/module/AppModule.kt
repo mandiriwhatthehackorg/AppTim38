@@ -1,6 +1,7 @@
 package id.co.mandiri.milenials_deposit.deps.module
 
 import android.content.Context
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
 import id.co.mandiri.corelibrary.commons.DiffCallback

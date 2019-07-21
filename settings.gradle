@@ -1,1 +1,1 @@
-include ':app', ':corelibrary'
+include ':app', ':corelibrary', ':webrtc'

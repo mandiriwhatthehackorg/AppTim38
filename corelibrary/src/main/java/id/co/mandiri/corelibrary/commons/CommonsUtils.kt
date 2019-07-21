@@ -102,3 +102,7 @@ fun Activity.showDialog(
 fun Context.color(@ColorRes colorRes: Int): Int = ContextCompat.getColor(this, colorRes)
 
 fun Fragment.color(@ColorRes colorRes: Int): Int = requireContext().color(colorRes)
+
+fun toRupiah(currency: Double): String {
+    return String.format("Rp. %,.0f", currency).replace(",", ".") + ",00"
+}

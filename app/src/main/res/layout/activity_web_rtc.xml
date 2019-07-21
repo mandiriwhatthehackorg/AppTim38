@@ -1,0 +1,75 @@
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:ignore="MergeRootFrame">
+
+    <org.webrtc.SurfaceViewRenderer
+            android:id="@+id/fullscreen_video_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+    <org.webrtc.SurfaceViewRenderer
+            android:id="@+id/pip_video_view"
+            android:layout_height="144dp"
+            android:layout_width="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"/>
+
+    <LinearLayout
+            android:id="@+id/generated_room_id"
+            android:orientation="horizontal"
+            android:layout_gravity="center|top"
+            android:padding="20dp"
+            android:textSize="30sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary">
+
+        <TextView
+                android:id="@+id/roomID"
+                android:fontFamily="@font/myriadpro_semibold"
+                android:textColor="@color/colorWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/buttons_call_container"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_vertical|bottom"
+            android:layout_marginTop="32dp"
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                app:backgroundTint="@color/colorRed"
+                android:id="@+id/button_call_disconnect"
+                app:srcCompat="@drawable/ic_call_end"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                app:backgroundTint="@color/colorWhite"
+                android:id="@+id/button_call_switch_camera"
+                app:srcCompat="@drawable/ic_camera"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                app:backgroundTint="@color/colorWhite"
+                android:id="@+id/button_call_toggle_mic"
+                app:srcCompat="@drawable/ic_mic_black"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</FrameLayout>

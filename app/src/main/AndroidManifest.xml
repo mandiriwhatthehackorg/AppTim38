@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="id.co.mandiri.milenials_deposit">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="id.co.mandiri.milenials_deposit">
+
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <uses-feature
+            android:glEsVersion="0x00020000"
+            android:required="true"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
             android:name=".MainApp"
@@ -10,8 +26,41 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
+            android:usesCleartextTraffic="true"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".section.MainActivity">
+        <activity android:name=".section.verification.TransactionSuccessActivity">
+        </activity>
+        <activity
+                android:name=".section.webrtc.WebRtcActivity"
+                android:configChanges="orientation|screenSize"
+                android:hardwareAccelerated="true"
+                android:launchMode="singleInstance"
+                android:screenOrientation="fullUser">
+        </activity>
+        <activity android:name=".section.verification.VerificationSignatureActivity">
+        </activity>
+        <activity android:name=".section.verification.VerificationSelfieActivity">
+        </activity>
+        <activity android:name=".section.verification.VerificationKtpActivity">
+        </activity>
+        <activity android:name=".section.history.HistoryLifePlanActivity">
+        </activity>
+        <activity android:name=".section.verification.VerificationIntroductionActivity">
+        </activity>
+        <activity android:name=".section.profile.ProfileActivity">
+        </activity>
+        <activity android:name=".section.addlifeplan.CreateLifePlanActivity">
+        </activity>
+        <activity
+                android:name=".section.home.HomeActivity"
+                android:label="@string/title_activity_home"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+                android:name=".section.login.LoginActivity"
+                android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
+        <activity android:name=".section.onboarding.OnboardingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
