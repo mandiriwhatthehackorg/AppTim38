@@ -77,7 +77,7 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
                     listSavingInformaiton.add(
                         SavingAuthModel(
                             "${dataQuery.data["name"]}",
-                            "${dataQuery.data["duedate"]}",
+                            "",
                             "${dataQuery.data["nominal"]}".toDouble(),
                             "${dataQuery.data["duration"]}".toDouble(),
                             "${dataQuery.data["done"]}".toInt()

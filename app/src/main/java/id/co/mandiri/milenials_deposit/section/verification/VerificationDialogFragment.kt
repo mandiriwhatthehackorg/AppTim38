@@ -9,6 +9,7 @@ import androidx.fragment.app.DialogFragment
 import id.co.mandiri.corelibrary.commons.toRupiah
 import id.co.mandiri.milenials_deposit.R
 import kotlinx.android.synthetic.main.dialog_fragment_verification.*
+import id.co.mandiri.milenials_deposit.section.home.HomeActivity
 
 /**
  * Created by pertadima on 20,July,2019
@@ -54,7 +55,8 @@ class VerificationDialogFragment : DialogFragment() {
             if(isNew) {
                 startActivity(Intent(requireContext(), VerificationIntroductionActivity::class.java))
             } else {
-
+                startActivity(Intent(requireContext(), HomeActivity::class.java))
+                activity?.finishAffinity()
             }
         }
 

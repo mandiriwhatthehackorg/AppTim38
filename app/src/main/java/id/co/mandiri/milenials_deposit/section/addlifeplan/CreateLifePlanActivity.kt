@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
+import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.co.mandiri.corelibrary.commons.DiffCallback
 import id.co.mandiri.corelibrary.commons.GeneralRecyclerView
@@ -26,6 +27,8 @@ class CreateLifePlanActivity : BaseActivity() {
     @Inject
     lateinit var createLifePlanViewModel: CreateLifePlanViewModel
 
+    lateinit var fragment: DialogFragment
+
     private val productAdapter by lazy {
         GeneralRecyclerView<LifePlanPackageModel>(
             diffCallback = diffCallback,
@@ -37,12 +40,10 @@ class CreateLifePlanActivity : BaseActivity() {
             itemListener = { data, pos, view ->
                 collapsedItem(data, pos, view)
             },
-            specificViewListener = { data, _, _ ->
-                fragmentTransaction = supportFragmentManager.beginTransaction()
-                fragmentTransaction.addToBackStack(null)
-
-                VerificationDialogFragment().newInstance(data.packageName, (data.nominal / data.duration), isNew)
-                    .show(fragmentTransaction, "DIALOG")
+            specificViewListener = { data, pos, _ ->
+                createLifePlanViewModel.savePlanPackage(pos)
+                fragment =
+                    VerificationDialogFragment().newInstance(data.packageName, (data.nominal / data.duration), isNew)
             }
         )
     }
@@ -73,6 +74,13 @@ class CreateLifePlanActivity : BaseActivity() {
 
     private fun observeViewModel() {
         with(createLifePlanViewModel) {
+            observeSaveSuccess().onResult {
+                if (it!!) {
+                    fragmentTransaction = supportFragmentManager.beginTransaction()
+                    fragmentTransaction.addToBackStack(null)
+                    fragment.show(fragmentTransaction, "DIALOG")
+                }
+            }
             observeLoading().onResult {
                 progress_bar.isVisible = it
             }

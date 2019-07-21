@@ -2,6 +2,7 @@ package id.co.mandiri.milenials_deposit.section.webrtc
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import android.widget.Toast
 import androidx.annotation.UiThread
 import id.co.mandiri.milenials_deposit.R
 import id.co.mandiri.milenials_deposit.base.BaseActivity
+import id.co.mandiri.milenials_deposit.section.verification.TransactionSuccessActivity
 import id.co.mandiri.webrtc.AppRTCClient
 import id.co.mandiri.webrtc.PeerConnectionClient
 import id.co.mandiri.webrtc.WebSocketRTCClient
@@ -161,7 +163,6 @@ class WebRtcActivity : BaseActivity(), AppRTCClient.SignalingEvents, PeerConnect
     }
 
     fun onCallHangUp() {
-        
         disconnect()
     }
 
@@ -230,6 +231,7 @@ class WebRtcActivity : BaseActivity(), AppRTCClient.SignalingEvents, PeerConnect
         } else {
             setResult(Activity.RESULT_CANCELED)
         }
+        startActivity(Intent(this@WebRtcActivity, TransactionSuccessActivity::class.java))
         finish()
     }
 
