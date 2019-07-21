@@ -12,6 +12,7 @@ import id.co.mandiri.milenials_deposit.section.verification.VerificationIntroduc
 import id.co.mandiri.milenials_deposit.section.verification.VerificationKtpActivity
 import id.co.mandiri.milenials_deposit.section.verification.VerificationSelfieActivity
 import id.co.mandiri.milenials_deposit.section.verification.VerificationSignatureActivity
+import id.co.mandiri.milenials_deposit.section.webrtc.WebRtcActivity
 
 /**
  * Created by pertadima on 19,July,2019
@@ -49,4 +50,7 @@ abstract class ActivityBuilder {
 
     @ContributesAndroidInjector
     abstract fun verificationSignatureActivity(): VerificationSignatureActivity
+
+    @ContributesAndroidInjector
+    abstract fun webRtcAcivity(): WebRtcActivity
 }

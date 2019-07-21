@@ -18,6 +18,7 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 import id.co.mandiri.milenials_deposit.R
 import id.co.mandiri.milenials_deposit.base.BaseActivity
+import id.co.mandiri.milenials_deposit.section.webrtc.WebRtcActivity
 import kotlinx.android.synthetic.main.activity_verification_signature.*
 import kotlinx.android.synthetic.main.default_toolbar.view.*
 import java.io.IOException
@@ -44,7 +45,7 @@ class VerificationSignatureActivity : BaseActivity(), SurfaceHolder.Callback, Ca
         surfaceHolder!!.addCallback(this)
 
         btn_add_life_plan.setOnClickListener {
-
+            startActivity(Intent(this@VerificationSignatureActivity, WebRtcActivity::class.java))
         }
     }
 

@@ -47,6 +47,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':corelibrary')
+    implementation project(':webrtc')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.multidex:multidex:2.0.1'
@@ -105,6 +106,9 @@ dependencies {
 
     // PERMISSION
     implementation 'com.karumi:dexter:5.0.0'
+
+    //WEB RTC
+    implementation 'org.webrtc:google-webrtc:1.0.22672'
 
     kapt 'com.github.bumptech.glide:compiler:4.7.1'
     testImplementation 'junit:junit:4.12'
